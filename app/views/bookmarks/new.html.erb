@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      Add bookmark
+      <%= simple_form_for @bookmark do |f| %>
+      <%= f.input :name %>
+      <%= f.association :list %>
+      <%= f.association :movie %>
+      <%= f.button :submit %>
+      <% end %>
+    </div>
+  </div>
+</div>

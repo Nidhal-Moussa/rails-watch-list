@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <% @lists.each do |list| %>
+        <div><%= link_to list.name , list_path(list) %></div>
+      <% end %>
+    </div>
+    <%= link_to "add new one", new_list_path %>
+  </div>
+</div>
