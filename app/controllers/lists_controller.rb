@@ -1,10 +1,11 @@
 class ListsController < ApplicationController
+  before_action :set_params, only: [:show, :destroy]
+
   def index
     @lists = List.all
   end
 
   def show
-    @list = List.find(params[:id])
   end
 
   def new
@@ -18,6 +19,16 @@ class ListsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @list.destroy
+  end
+
+  private
+
+  def set_params
+    @list = List.find(params[:id])
   end
 
   def list_params
