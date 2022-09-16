@@ -1,14 +1,26 @@
+<nav class=" container d-flex align-items-center justify-content-between">
+  <div class='img'><%= image_tag("popcorn.png")%></div>
+  <div><%= link_to "new list", new_list_path %></div>
+</nav>
+
+<div class='text-center backgroundimg pt-5'>
+  <h1>save any kind of movies</h1>
+  <h2><%= @list.name %></h2>
+</div>
 <div class="container">
   <div class="row">
     <div class="col-6">
-      <div><%= @list.name %>:</div>
-      bookmarks are
-      <div><%= @list.bookmarks.first.comment %></div>
-      <div><%= @list.bookmarks.first.movie.title %></div>
-      <div>
-
-        <%= link_to "add new bookmarkt", new_list_bookmark_path(@list) %>
+    <%= link_to "add new bookmarkt", new_list_bookmark_path(@list), class:'btn btn-success my-3' %>
+    <div class="list-grid">
+      <% @list.bookmarks.each do |bookmark| %>
+      <div class="align-list">
+      <div class="w-100"><%= image_tag(bookmark.movie.poster_url, width: 400, height: 300, crop: :fill) %></div>
+        <div><%= bookmark.movie.title %></div>
+        <div><%= bookmark.movie.overview %></div>
+        <div class="d-flex justify-content-between"><div>&& <%= bookmark.comment %></div><%= link_to "delete", delete_bookmark_path(bookmark), method: :delete %></div>
+      <% end %>
       </div>
+    </div>
     </div>
   </div>
 </div>

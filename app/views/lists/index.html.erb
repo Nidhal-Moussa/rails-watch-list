@@ -1,12 +1,23 @@
-<div class="container pt-5">
+<nav class=" container d-flex align-items-center justify-content-between">
+  <div class='img'><%= image_tag("popcorn.png")%></div>
+  <div><%= link_to "new list", new_list_path %></div>
+</nav>
+
+<div class='text-center backgroundimg pt-5'>
+  <h1>save any kind of movies</h1>
+  <h2>classic</h2>
+</div>
+
+<div class="container pt-3">
   <div class="row">
     <div class="col-6">
-      our lists are
+      <div>My Lists</div>
       <% @lists.each do |list| %>
-      <div><%= link_to list.name, list_path(list) %></div>
+      <div class="align-lists">
+        <div><%= link_to list.name, list_path(list), class:"listdiv" %></div>
+      </div>
       <% end %>
       <hr>
-      <%= link_to "add new one", new_list_path %>
     </div>
   </div>
 </div>
